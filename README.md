@@ -1,12 +1,13 @@
-# Agente Sumiller Vera
+# Vera – AI Wine Shopping Agent (research prototype)
 
-Prototipo de investigación del proyecto *Customer value management through AI digital marketing assistants* ([customerbrandlab.com](https://customerbrandlab.com)).
+Research prototype from the project **Delegating to AI: interaction design and signalling for customer value (AI-DELEGATION)**.
 
-Simula una tienda online de vinos (ficticia) con un asistente de compra conversacional. Permite manipular experimentalmente el formato de respuesta, el número de preguntas, la autonomía del agente, la atribución de la recomendación, la personalización, la señal de garantía, el resultado de la compra y la memoria entre sesiones. Registra cada interacción en JSON.
+It simulates a (fictitious) online wine shop with a conversational shopping assistant. The researcher panel lets you experimentally manipulate response format, number of questions, agent autonomy, recommendation attribution, agent personalisation, assurance signal, purchase outcome and memory across sessions. Every interaction is logged as JSON.
 
-- Abrir `index.html` en el navegador. El panel del investigador permite elegir la condición.
-- Enlace para participantes: añadir `#participante-...` (el panel genera el enlace de cada condición).
+- `index.html`: English version. `es.html`: Spanish version (same design, conditions and logging).
+- Open either file in a browser and choose the condition in the researcher panel.
+- Participant links: append `#participante-...` to the URL (the panel generates the link for each condition).
 
-Tienda, bodegas y vinos son ficticios.
+The shop, wineries and wines are fictitious.
 
-© 2026 Customer Brand Lab. Licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.es).
+© 2026 AI-DELEGATION project. Licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/).

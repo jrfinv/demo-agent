@@ -1,8 +1,8 @@
-<!doctype html><html lang="es"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
+<!doctype html><html lang="en"><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow, noarchive">
-<!-- © 2026 Jaime Romero y equipo del proyecto Customer Brand Lab (customerbrandlab.com). Licencia CC BY-NC-SA 4.0. -->
+<!-- © 2026 AI-DELEGATION project: "Delegating to AI: interaction design and signalling for customer value". Licensed under CC BY-NC-SA 4.0. -->
 <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>Agente Sumiller Vera</title>
+<title>Vera – AI Wine Shopping Agent</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Instrument+Sans:wght@400;500;600&display=swap">
@@ -98,153 +98,155 @@ button:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visi
 </style>
 
 <div class="wrap" id="wrap">
-  <main class="shop" aria-label="Tienda">
+  <main class="shop" aria-label="Shop">
     <header class="shop-head">
-      <div class="brand"><span>Tienda online de vinos</span><h1>La Cava Digital</h1></div>
+      <div class="brand"><span>Online wine shop</span><h1>The Digital Cellar</h1></div>
       <div id="assurance" class="badge" hidden>
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1l6 2.5v4C14 11 11.5 14 8 15 4.5 14 2 11 2 7.5v-4L8 1z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5.2 8l2 2 3.6-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-        Asistente verificado · Puedes cancelar cualquier compra en 24 h
+        Verified assistant · Cancel any purchase within 24 h
       </div>
     </header>
-    <div class="scenario" id="scenario"><b>Tu tarea:</b> el sábado tienes una cena con amigos en casa y quieres comprar un vino. El asistente de la tienda te ayudará.</div>
+    <div class="scenario" id="scenario"><b>Your task:</b> on Saturday you are having friends over for dinner and want to buy a bottle of wine. The shop’s assistant will help you.</div>
     <section class="chat" id="chat" aria-live="polite"></section>
     <div class="chips" id="chips"></div>
     <form class="composer" id="composer" hidden>
-      <label for="msg" hidden>Tu respuesta</label>
-      <input id="msg" autocomplete="off" placeholder="Escribe tu respuesta…">
-      <button class="btn" id="send" type="submit">Enviar</button>
+      <label for="msg" hidden>Your answer</label>
+      <input id="msg" autocomplete="off" placeholder="Type your answer…">
+      <button class="btn" id="send" type="submit">Send</button>
     </form>
   </main>
 
-  <aside class="panel" id="panel" aria-label="Panel del investigador">
+  <aside class="panel" id="panel" aria-label="Researcher panel">
     <div>
-      <h2>Panel del investigador</h2>
-      <p class="hint">Elige la condición y pulsa «Empezar». En el estudio el panel no se muestra: la condición llega en el enlace.</p>
+      <h2>Researcher panel</h2>
+      <p class="hint">Choose the condition and press “Start”. In the study the panel is hidden: the condition is passed in the link.</p>
+      <p class="hint"><a href="es.html">Versión en español</a></p>
     </div>
 
-    <div class="group"><h3>Configuración de la interacción</h3>
-      <div class="field"><span>Formato de respuesta</span>
-        <div class="seg" data-key="resp"><button type="button" data-v="opciones">Opciones</button><button type="button" data-v="texto">Texto libre</button></div></div>
-      <div class="field"><span>Número de preguntas</span>
+    <div class="group"><h3>Interaction design</h3>
+      <div class="field"><span>Response format</span>
+        <div class="seg" data-key="resp"><button type="button" data-v="opciones">Options</button><button type="button" data-v="texto">Free text</button></div></div>
+      <div class="field"><span>Number of questions</span>
         <div class="seg" data-key="q"><button type="button" data-v="3">3</button><button type="button" data-v="8">8</button></div></div>
-      <div class="field"><span>Uso</span>
-        <div class="seg" data-key="guia"><button type="button" data-v="guiado">Guiado (una pasada)</button><button type="button" data-v="libre">Libre (permite volver atrás)</button></div></div>
+      <div class="field"><span>Use</span>
+        <div class="seg" data-key="guia"><button type="button" data-v="guiado">Guided (single pass)</button><button type="button" data-v="libre">Free (can go back)</button></div></div>
     </div>
 
-    <div class="group"><h3>Agente y decisión</h3>
-      <div class="field"><span>Autonomía del agente</span>
-        <div class="seg" data-key="aut"><button type="button" data-v="recomienda">Recomienda</button><button type="button" data-v="confirma">Propone y confirmas</button><button type="button" data-v="autonomo">Compra solo</button></div></div>
-      <div class="field"><span>Atribución de la selección</span>
-        <div class="seg" data-key="atrib"><button type="button" data-v="propia">«Tu selección»</button><button type="button" data-v="social">«Clientes como tú»</button></div></div>
-      <div class="field"><span>Inversión en el agente</span>
-        <div class="seg" data-key="inv"><button type="button" data-v="defecto">Por defecto</button><button type="button" data-v="personaliza">Personalizado</button></div></div>
-      <div class="field"><span>Señal de garantía</span>
-        <div class="seg" data-key="gar"><button type="button" data-v="no">Sin sello</button><button type="button" data-v="si">Con sello</button></div></div>
-      <div class="field"><span>Resultado de la compra</span>
-        <div class="seg" data-key="out"><button type="button" data-v="positivo">Positivo</button><button type="button" data-v="negativo">Negativo</button></div></div>
+    <div class="group"><h3>Agent and decision</h3>
+      <div class="field"><span>Agent autonomy</span>
+        <div class="seg" data-key="aut"><button type="button" data-v="recomienda">Recommends</button><button type="button" data-v="confirma">Proposes, you confirm</button><button type="button" data-v="autonomo">Buys on its own</button></div></div>
+      <div class="field"><span>Attribution of the selection</span>
+        <div class="seg" data-key="atrib"><button type="button" data-v="propia">“Your selection”</button><button type="button" data-v="social">“Customers like you”</button></div></div>
+      <div class="field"><span>Investment in the agent</span>
+        <div class="seg" data-key="inv"><button type="button" data-v="defecto">Default</button><button type="button" data-v="personaliza">Personalised</button></div></div>
+      <div class="field"><span>Assurance signal</span>
+        <div class="seg" data-key="gar"><button type="button" data-v="no">No seal</button><button type="button" data-v="si">With seal</button></div></div>
+      <div class="field"><span>Purchase outcome</span>
+        <div class="seg" data-key="out"><button type="button" data-v="positivo">Positive</button><button type="button" data-v="negativo">Negative</button></div></div>
     </div>
 
-    <div class="group"><h3>Participante y sesión</h3>
-      <div class="field"><span>Sesión</span>
+    <div class="group"><h3>Participant and session</h3>
+      <div class="field"><span>Session</span>
         <div class="seg" data-key="s"><button type="button" data-v="1">1</button><button type="button" data-v="2">2</button><button type="button" data-v="3">3</button><button type="button" data-v="4">4</button></div></div>
-      <label class="field" for="pid"><span>Identificador del participante</span><input type="text" id="pid" placeholder="p. ej., el ID de Prolific"></label>
-      <label class="field" for="mem"><span>Código de memoria de la sesión anterior</span><input type="text" id="mem" placeholder="Se genera al terminar una sesión"></label>
+      <label class="field" for="pid"><span>Participant ID</span><input type="text" id="pid" placeholder="e.g., Prolific ID"></label>
+      <label class="field" for="mem"><span>Memory code from previous session</span><input type="text" id="mem" placeholder="Generated at the end of a session"></label>
     </div>
 
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn small" id="start" type="button">Empezar</button>
-      <button class="btn ghost small" id="reset" type="button">Reiniciar</button>
+      <button class="btn small" id="start" type="button">Start</button>
+      <button class="btn ghost small" id="reset" type="button">Reset</button>
     </div>
-    <div class="field"><span>Enlace de esta condición</span><div class="cond" id="cond"></div>
-      <button class="btn ghost small" id="copylink" type="button" style="justify-self:start">Copiar enlace</button></div>
-    <div class="field"><span>Registro de la sesión (<b id="nlog">0</b> eventos)</span>
+    <div class="field"><span>Link for this condition</span><div class="cond" id="cond"></div>
+      <button class="btn ghost small" id="copylink" type="button" style="justify-self:start">Copy link</button></div>
+    <div class="field"><span>Session log (<b id="nlog">0</b> events)</span>
       <div class="log" id="log" tabindex="0"></div>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <button class="btn ghost small" id="copy" type="button">Copiar JSON</button>
-        <button class="btn ghost small" id="dl" type="button" hidden>Descargar JSON</button>
+        <button class="btn ghost small" id="copy" type="button">Copy JSON</button>
+        <button class="btn ghost small" id="dl" type="button" hidden>Download JSON</button>
       </div>
       <p class="note" id="copy-note" aria-live="polite"></p>
       <p class="note" id="store-note"></p>
     </div>
   </aside>
 </div>
-<p class="legal">© 2026 Proyecto Customer Brand Lab (customerbrandlab.com). Prototipo de investigación. Licencia CC BY-NC-SA 4.0. Tienda y bodegas ficticias.</p>
+<p class="legal">© 2026 AI-DELEGATION project – Delegating to AI: interaction design and signalling for customer value. Research prototype. Licensed under CC BY-NC-SA 4.0. Fictitious shop and wineries.</p>
 
 <script>
 (() => {
 // ================= Catálogo ficticio (bodegas inventadas, D.O. reales) =================
 const WINES = [
-  {id:1, name:"Páramo Alto Crianza", bodega:"Bodegas Páramo Alto", do:"Ribera del Duero", color:"tinto", uva:"Tempranillo", anada:2021, alc:14.5, price:18, cuerpo:"alto", food:["carne_roja"], notes:"Fruta negra madura, regaliz y roble tostado."},
-  {id:2, name:"Viña Ercilla Reserva", bodega:"Viñedos Ercilla", do:"Rioja", color:"tinto", uva:"Tempranillo y Graciano", anada:2019, alc:14, price:24, cuerpo:"medio-alto", food:["carne_roja","carne_blanca"], notes:"Cereza, especias dulces y taninos pulidos."},
-  {id:3, name:"Llicorella Negra", bodega:"Celler Coll de l'Arc", do:"Priorat", color:"tinto", uva:"Garnacha y Cariñena", anada:2020, alc:15, price:32, cuerpo:"alto", food:["carne_roja"], notes:"Mineral, potente, con notas de pizarra y monte bajo."},
-  {id:4, name:"Canto Rodado", bodega:"Adega Canto Rodado", do:"Bierzo", color:"tinto", uva:"Mencía", anada:2022, alc:13, price:13, cuerpo:"medio", food:["carne_blanca","aperitivo_quesos"], notes:"Frambuesa, violeta y un final fresco."},
-  {id:5, name:"Solana Monastrell", bodega:"Bodegas La Solana", do:"Jumilla", color:"tinto", uva:"Monastrell", anada:2022, alc:14.5, price:11, cuerpo:"medio-alto", food:["carne_roja","aperitivo_quesos"], notes:"Ciruela, higo y un toque mediterráneo."},
-  {id:6, name:"Mar de Arousa", bodega:"Adega Mar de Arousa", do:"Rías Baixas", color:"blanco", uva:"Albariño", anada:2024, alc:12.5, price:14, cuerpo:"ligero", food:["pescado_marisco"], notes:"Cítricos, melocotón blanco y salinidad."},
-  {id:7, name:"Campo Dorado", bodega:"Bodegas Campo Dorado", do:"Rueda", color:"blanco", uva:"Verdejo", anada:2024, alc:13, price:9, cuerpo:"ligero", food:["aperitivo_quesos","pescado_marisco"], notes:"Hierba fresca, hinojo y final ligeramente amargo."},
-  {id:8, name:"Pizarra Godello", bodega:"Adega Pizarra", do:"Valdeorras", color:"blanco", uva:"Godello", anada:2023, alc:13.5, price:19, cuerpo:"medio", food:["pescado_marisco","carne_blanca"], notes:"Manzana, flores blancas y textura untuosa."},
-  {id:9, name:"Lías Blancas", bodega:"Viñedos Ercilla", do:"Rioja", color:"blanco", uva:"Viura fermentada en barrica", anada:2022, alc:13.5, price:21, cuerpo:"medio", food:["arroz_pasta","pescado_marisco"], notes:"Fruta de hueso, vainilla y crema."},
-  {id:10, name:"Garnacha Aurora", bodega:"Bodegas Aurora", do:"Navarra", color:"rosado", uva:"Garnacha", anada:2024, alc:13, price:10, cuerpo:"ligero", food:["arroz_pasta","aperitivo_quesos"], notes:"Fresa, piel de naranja y mucha frescura."},
-  {id:11, name:"Clos Vermell Brut Nature", bodega:"Caves Clos Vermell", do:"Cava", color:"espumoso", uva:"Xarel·lo, Macabeo y Parellada", anada:2021, alc:11.5, price:16, cuerpo:"ligero", food:["aperitivo_quesos","pescado_marisco"], notes:"Burbuja fina, manzana verde y pan tostado."},
-  {id:12, name:"Fosc Gran Reserva", bodega:"Caves Clos Vermell", do:"Cava", color:"espumoso", uva:"Xarel·lo y Chardonnay", anada:2018, alc:12, price:29, cuerpo:"medio", food:["pescado_marisco","arroz_pasta"], notes:"Frutos secos, brioche y largo envejecimiento."},
-  {id:13, name:"Tejar de Toro", bodega:"Bodegas El Tejar", do:"Toro", color:"tinto", uva:"Tinta de Toro", anada:2022, alc:14.5, price:15, cuerpo:"alto", food:["carne_roja"], notes:"Mora, cacao y taninos firmes."},
-  {id:14, name:"Valdejalón Garnacha", bodega:"Viñas del Jalón", do:"Calatayud", color:"tinto", uva:"Garnacha", anada:2023, alc:14, price:8, cuerpo:"medio", food:["carne_blanca","arroz_pasta"], notes:"Fresa madura, especias y paso amable."},
-  {id:15, name:"Txakoli Itsaso", bodega:"Itsaso Upategia", do:"Getariako Txakolina", color:"blanco", uva:"Hondarrabi Zuri", anada:2024, alc:11, price:13, cuerpo:"ligero", food:["pescado_marisco","aperitivo_quesos"], notes:"Lima, manzana verde y ligera aguja."},
-  {id:16, name:"Monte Lentisco Bobal", bodega:"Bodegas Monte Lentisco", do:"Utiel-Requena", color:"tinto", uva:"Bobal", anada:2022, alc:13.5, price:12, cuerpo:"medio", food:["carne_blanca","arroz_pasta"], notes:"Arándano, hierbas de monte y frescura."},
-  {id:17, name:"Rosa de Cigales", bodega:"Bodegas La Ribera Alta", do:"Cigales", color:"rosado", uva:"Tempranillo y Garnacha", anada:2024, alc:13, price:9, cuerpo:"ligero", food:["arroz_pasta","aperitivo_quesos"], notes:"Frambuesa, pétalos y final crujiente."},
-  {id:18, name:"Cumbre Malvar", bodega:"Bodegas Cumbre", do:"Vinos de Madrid", color:"blanco", uva:"Malvar", anada:2023, alc:12.5, price:11, cuerpo:"ligero", food:["aperitivo_quesos","pescado_marisco"], notes:"Pera, flores y un toque herbáceo."}
+  {id:1, name:"Páramo Alto Crianza", bodega:"Bodegas Páramo Alto", do:"Ribera del Duero", color:"tinto", uva:"Tempranillo", anada:2021, alc:14.5, price:18, cuerpo:"alto", food:["carne_roja"], notes:"Ripe black fruit, liquorice and toasted oak."},
+  {id:2, name:"Viña Ercilla Reserva", bodega:"Viñedos Ercilla", do:"Rioja", color:"tinto", uva:"Tempranillo and Graciano", anada:2019, alc:14, price:24, cuerpo:"medio-alto", food:["carne_roja","carne_blanca"], notes:"Cherry, sweet spice and polished tannins."},
+  {id:3, name:"Llicorella Negra", bodega:"Celler Coll de l'Arc", do:"Priorat", color:"tinto", uva:"Garnacha and Cariñena", anada:2020, alc:15, price:32, cuerpo:"alto", food:["carne_roja"], notes:"Mineral and powerful, with notes of slate and wild herbs."},
+  {id:4, name:"Canto Rodado", bodega:"Adega Canto Rodado", do:"Bierzo", color:"tinto", uva:"Mencía", anada:2022, alc:13, price:13, cuerpo:"medio", food:["carne_blanca","aperitivo_quesos"], notes:"Raspberry, violet and a fresh finish."},
+  {id:5, name:"Solana Monastrell", bodega:"Bodegas La Solana", do:"Jumilla", color:"tinto", uva:"Monastrell", anada:2022, alc:14.5, price:11, cuerpo:"medio-alto", food:["carne_roja","aperitivo_quesos"], notes:"Plum, fig and a Mediterranean touch."},
+  {id:6, name:"Mar de Arousa", bodega:"Adega Mar de Arousa", do:"Rías Baixas", color:"blanco", uva:"Albariño", anada:2024, alc:12.5, price:14, cuerpo:"ligero", food:["pescado_marisco"], notes:"Citrus, white peach and saline notes."},
+  {id:7, name:"Campo Dorado", bodega:"Bodegas Campo Dorado", do:"Rueda", color:"blanco", uva:"Verdejo", anada:2024, alc:13, price:9, cuerpo:"ligero", food:["aperitivo_quesos","pescado_marisco"], notes:"Fresh grass, fennel and a slightly bitter finish."},
+  {id:8, name:"Pizarra Godello", bodega:"Adega Pizarra", do:"Valdeorras", color:"blanco", uva:"Godello", anada:2023, alc:13.5, price:19, cuerpo:"medio", food:["pescado_marisco","carne_blanca"], notes:"Apple, white flowers and a creamy texture."},
+  {id:9, name:"Lías Blancas", bodega:"Viñedos Ercilla", do:"Rioja", color:"blanco", uva:"Barrel-fermented Viura", anada:2022, alc:13.5, price:21, cuerpo:"medio", food:["arroz_pasta","pescado_marisco"], notes:"Stone fruit, vanilla and cream."},
+  {id:10, name:"Garnacha Aurora", bodega:"Bodegas Aurora", do:"Navarra", color:"rosado", uva:"Garnacha", anada:2024, alc:13, price:10, cuerpo:"ligero", food:["arroz_pasta","aperitivo_quesos"], notes:"Strawberry, orange peel and lots of freshness."},
+  {id:11, name:"Clos Vermell Brut Nature", bodega:"Caves Clos Vermell", do:"Cava", color:"espumoso", uva:"Xarel·lo, Macabeo and Parellada", anada:2021, alc:11.5, price:16, cuerpo:"ligero", food:["aperitivo_quesos","pescado_marisco"], notes:"Fine bubbles, green apple and toast."},
+  {id:12, name:"Fosc Gran Reserva", bodega:"Caves Clos Vermell", do:"Cava", color:"espumoso", uva:"Xarel·lo and Chardonnay", anada:2018, alc:12, price:29, cuerpo:"medio", food:["pescado_marisco","arroz_pasta"], notes:"Nuts, brioche and long ageing."},
+  {id:13, name:"Tejar de Toro", bodega:"Bodegas El Tejar", do:"Toro", color:"tinto", uva:"Tinta de Toro", anada:2022, alc:14.5, price:15, cuerpo:"alto", food:["carne_roja"], notes:"Blackberry, cocoa and firm tannins."},
+  {id:14, name:"Valdejalón Garnacha", bodega:"Viñas del Jalón", do:"Calatayud", color:"tinto", uva:"Garnacha", anada:2023, alc:14, price:8, cuerpo:"medio", food:["carne_blanca","arroz_pasta"], notes:"Ripe strawberry, spice and an easy-drinking palate."},
+  {id:15, name:"Txakoli Itsaso", bodega:"Itsaso Upategia", do:"Getariako Txakolina", color:"blanco", uva:"Hondarrabi Zuri", anada:2024, alc:11, price:13, cuerpo:"ligero", food:["pescado_marisco","aperitivo_quesos"], notes:"Lime, green apple and a light spritz."},
+  {id:16, name:"Monte Lentisco Bobal", bodega:"Bodegas Monte Lentisco", do:"Utiel-Requena", color:"tinto", uva:"Bobal", anada:2022, alc:13.5, price:12, cuerpo:"medio", food:["carne_blanca","arroz_pasta"], notes:"Blueberry, wild herbs and freshness."},
+  {id:17, name:"Rosa de Cigales", bodega:"Bodegas La Ribera Alta", do:"Cigales", color:"rosado", uva:"Tempranillo and Garnacha", anada:2024, alc:13, price:9, cuerpo:"ligero", food:["arroz_pasta","aperitivo_quesos"], notes:"Raspberry, petals and a crisp finish."},
+  {id:18, name:"Cumbre Malvar", bodega:"Bodegas Cumbre", do:"Vinos de Madrid", color:"blanco", uva:"Malvar", anada:2023, alc:12.5, price:11, cuerpo:"ligero", food:["aperitivo_quesos","pescado_marisco"], notes:"Pear, flowers and a herbal touch."}
 ];
 const CLASSIC_DO = ["Rioja","Ribera del Duero","Rueda","Rías Baixas","Cava"];
-const FOOD = {carne_roja:"carne roja", carne_blanca:"aves o carne blanca", pescado_marisco:"pescado o marisco", arroz_pasta:"arroz o pasta", aperitivo_quesos:"aperitivos y quesos"};
-const NEG = {carne_roja:"demasiado ligero para la carne", carne_blanca:"demasiado potente para el plato", pescado_marisco:"demasiado ácido y tapó el sabor del marisco", arroz_pasta:"plano y sin gracia con el plato", aperitivo_quesos:"demasiado tánico con los quesos"};
+const FOOD = {carne_roja:"red meat", carne_blanca:"poultry or white meat", pescado_marisco:"fish or seafood", arroz_pasta:"rice or pasta", aperitivo_quesos:"appetisers and cheese"};
+const COLOR = {tinto:"red", blanco:"white", rosado:"rosé", espumoso:"sparkling"};
+const NEG = {carne_roja:"too light for the meat", carne_blanca:"too heavy for the dish", pescado_marisco:"too acidic and it overpowered the seafood", arroz_pasta:"flat and dull with the dish", aperitivo_quesos:"too tannic for the cheese"};
 
 // ================= Preguntas (mismo texto en opciones y en texto libre) =================
 const Q = {
-  comida:{q:"¿Qué vais a comer?", ex:"«cordero asado» o «una paella de marisco»",
-    opts:[["Carne roja","carne_roja"],["Aves o carne blanca","carne_blanca"],["Pescado o marisco","pescado_marisco"],["Arroz o pasta","arroz_pasta"],["Aperitivos y quesos","aperitivo_quesos"]]},
-  presupuesto:{q:"¿Cuánto quieres gastar como máximo por botella?", ex:"«unos 15 euros»",
-    opts:[["Hasta 10 €",10],["Hasta 15 €",15],["Hasta 20 €",20],["Hasta 30 €",30]]},
-  color:{q:"¿Tienes preferencia de tipo de vino: tinto, blanco, rosado o espumoso?", ex:"«un tinto» o «me da igual»",
-    opts:[["Tinto","tinto"],["Blanco","blanco"],["Rosado","rosado"],["Espumoso","espumoso"],["Me da igual","indiferente"]]},
-  ocasion:{q:"¿Qué tipo de ocasión es?", ex:"«celebramos un cumpleaños» o «una cena normal»",
-    opts:[["Una cena en casa","cena_casa"],["Una celebración","celebracion"],["Es para regalar","regalo"],["Para el día a día","diario"]]},
-  comensales:{q:"¿Cuántas personas seréis?", ex:"«seremos seis»",
-    opts:[["2","2"],["3 o 4","3-4"],["De 5 a 8","5-8"],["Más de 8","9+"]]},
-  cuerpo:{q:"¿Lo prefieres ligero, medio o con cuerpo?", ex:"«algo suave» o «con cuerpo»",
-    opts:[["Ligero","ligero"],["Medio","medio"],["Con cuerpo","intenso"],["Me da igual","indiferente"]]},
-  experiencia:{q:"¿Cuánta experiencia tienes con el vino?", ex:"«entiendo poco» o «bastante»",
-    opts:[["Poca","poca"],["Algo","algo"],["Bastante","mucha"]]},
-  nuevo:{q:"¿Te apetece descubrir algo diferente o prefieres un clásico?", ex:"«algo distinto» o «un clásico»",
-    opts:[["Descubrir algo diferente","descubrir"],["Un clásico","clasico"],["Me da igual","indiferente"]]}
+  comida:{q:"What are you going to eat?", ex:"“roast lamb” or “a seafood paella”",
+    opts:[["Red meat","carne_roja"],["Poultry or white meat","carne_blanca"],["Fish or seafood","pescado_marisco"],["Rice or pasta","arroz_pasta"],["Appetisers and cheese","aperitivo_quesos"]]},
+  presupuesto:{q:"What is the most you want to spend per bottle?", ex:"“about 15 euros”",
+    opts:[["Up to €10",10],["Up to €15",15],["Up to €20",20],["Up to €30",30]]},
+  color:{q:"Do you have a preference: red, white, rosé or sparkling?", ex:"“a red” or “I don’t mind”",
+    opts:[["Red","tinto"],["White","blanco"],["Rosé","rosado"],["Sparkling","espumoso"],["I don’t mind","indiferente"]]},
+  ocasion:{q:"What kind of occasion is it?", ex:"“a birthday” or “just a normal dinner”",
+    opts:[["A dinner at home","cena_casa"],["A celebration","celebracion"],["It’s a gift","regalo"],["For everyday drinking","diario"]]},
+  comensales:{q:"How many people will there be?", ex:"“there will be six of us”",
+    opts:[["2","2"],["3 or 4","3-4"],["5 to 8","5-8"],["More than 8","9+"]]},
+  cuerpo:{q:"Do you prefer it light, medium or full-bodied?", ex:"“something smooth” or “full-bodied”",
+    opts:[["Light","ligero"],["Medium","medio"],["Full-bodied","intenso"],["I don’t mind","indiferente"]]},
+  experiencia:{q:"How much do you know about wine?", ex:"“not much” or “quite a lot”",
+    opts:[["Not much","poca"],["Some","algo"],["Quite a lot","mucha"]]},
+  nuevo:{q:"Would you like to discover something different or do you prefer a classic?", ex:"“something different” or “a classic”",
+    opts:[["Discover something different","descubrir"],["A classic","clasico"],["I don’t mind","indiferente"]]}
 };
 const ORDER = {"3":["comida","presupuesto","color"], "8":["comida","presupuesto","color","ocasion","comensales","cuerpo","experiencia","nuevo"]};
-const ACK = ["Perfecto.","Entendido.","Muy bien.","De acuerdo.","Anotado.","Genial.","Vale.","Gracias."];
+const ACK = ["Perfect.","Got it.","Very good.","All right.","Noted.","Great.","OK.","Thanks."];
 
 // ================= Interpretación del texto libre (reglas fijas: misma respuesta para todos) =================
 const norm = t => t.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
-const WORDNUM = {dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10,once:11,doce:12,quince:15,veinte:20,treinta:30,cuarenta:40,cincuenta:50};
+const WORDNUM = {two:2,three:3,four:4,five:5,six:6,seven:7,eight:8,nine:9,ten:10,eleven:11,twelve:12,fifteen:15,twenty:20,thirty:30,forty:40,fifty:50,dos:2,tres:3,cuatro:4,cinco:5,seis:6,siete:7,ocho:8,nueve:9,diez:10,quince:15,veinte:20,treinta:30};
 function firstNumber(t){ const m=t.match(/(\d+(?:[.,]\d+)?)/); if(m) return parseFloat(m[1].replace(",",".")); for(const [w,n] of Object.entries(WORDNUM)) if(new RegExp("\\b"+w+"\\b").test(t)) return n; return null; }
 const PARSE = {
-  comida(t){ if(/(pescad|marisc|gamba|langost|merluza|lubina|dorada|bacalao|salmon|atun|pulpo|sushi|mejill|almeja|ostra|centolla|rodaballo|sepia|calamar)/.test(t)) return "pescado_marisco";
-    if(/(arroz|paella|risotto|pasta|espagueti|macarr|lasana|pizza|fideu|ravioli)/.test(t)) return "arroz_pasta";
-    if(/(pollo|pavo|\bave|conejo|cerdo|lomo|carne blanca|secreto|pato|codorniz)/.test(t)) return "carne_blanca";
-    if(/(carne|ternera|buey|cordero|chulet|solomillo|entrecot|cochinillo|asado|caza|jabali|ciervo|hamburg|rabo|cabrito)/.test(t)) return "carne_roja";
-    if(/(aperitiv|queso|embutido|jamon|tapas|picoteo|tabla|iberic|canape|pica pica)/.test(t)) return "aperitivo_quesos"; return null; },
+  comida(t){ if(/(fish|seafood|prawn|shrimp|lobster|hake|sea bass|bream|cod|salmon|tuna|octopus|sushi|mussel|clam|oyster|crab|squid|scallop|pescad|marisc)/.test(t)) return "pescado_marisco";
+    if(/(rice|paella|risotto|pasta|spaghetti|macaroni|lasagn|pizza|noodle|ravioli|arroz)/.test(t)) return "arroz_pasta";
+    if(/(chicken|turkey|poultry|rabbit|pork|white meat|duck|quail|pollo|cerdo)/.test(t)) return "carne_blanca";
+    if(/(red meat|meat|beef|steak|lamb|sirloin|roast|game|venison|burger|veal|oxtail|carne|cordero)/.test(t)) return "carne_roja";
+    if(/(appeti|starter|nibble|snack|cheese|charcuterie|ham|tapas|canape|platter|queso)/.test(t)) return "aperitivo_quesos"; return null; },
   presupuesto(t){ const n=firstNumber(t); if(n && n>=3 && n<500) return Math.round(n);
-    if(/(barat|economic|poco dinero|no mucho)/.test(t)) return 10; if(/(da igual|sin limite|lo que sea|no importa|caro)/.test(t)) return 30; return null; },
-  color(t){ if(/(espumoso|cava|burbuja|champan)/.test(t)) return "espumoso"; if(/rosado/.test(t)) return "rosado"; if(/tinto/.test(t)) return "tinto"; if(/blanco/.test(t)) return "blanco";
-    if(/(igual|indiferente|cualquiera|no se|sorprend|lo que tu|no tengo preferencia|ninguna)/.test(t)) return "indiferente"; return null; },
-  ocasion(t){ if(/(celebr|cumple|aniversario|fiesta|boda|ascenso|brindis)/.test(t)) return "celebracion"; if(/regal/.test(t)) return "regalo";
-    if(/(diario|cualquier dia|entre semana|dia a dia|habitual)/.test(t)) return "diario"; if(/(cena|amigos|casa|normal|reunion|familia)/.test(t)) return "cena_casa"; return null; },
-  comensales(t){ let n=firstNumber(t); if(n==null){ if(/(pareja|los dos|nosotros dos)/.test(t)) n=2; else if(/(pocos|unos pocos)/.test(t)) n=4; else if(/(muchos|bastantes)/.test(t)) n=8; }
+    if(/(cheap|inexpensive|budget|not much|affordable|low)/.test(t)) return 10; if(/(don.?t mind|no limit|whatever|doesn.?t matter|expensive|any price)/.test(t)) return 30; return null; },
+  color(t){ if(/(sparkling|cava|bubbl|champagne|fizz|prosecco)/.test(t)) return "espumoso"; if(/(rose|pink)/.test(t)) return "rosado"; if(/\bred\b/.test(t)) return "tinto"; if(/\bwhite\b/.test(t)) return "blanco";
+    if(/(don.?t mind|no preference|any|either|not sure|surprise|whatever|up to you|none)/.test(t)) return "indiferente"; return null; },
+  ocasion(t){ if(/(celebrat|birthday|anniversary|party|wedding|promotion|toast)/.test(t)) return "celebracion"; if(/(gift|present)/.test(t)) return "regalo";
+    if(/(everyday|every day|weekday|daily|regular|usual)/.test(t)) return "diario"; if(/(dinner|friends|home|normal|gathering|family|meal)/.test(t)) return "cena_casa"; return null; },
+  comensales(t){ let n=firstNumber(t); if(n==null){ if(/(couple|two of us|just us)/.test(t)) n=2; else if(/(a few|few)/.test(t)) n=4; else if(/(many|lots|a lot)/.test(t)) n=8; }
     if(n==null) return null; return n<=2?"2":n<=4?"3-4":n<=8?"5-8":"9+"; },
-  cuerpo(t){ if(/(igual|indiferente|no se)/.test(t)) return "indiferente"; if(/(ligero|suave|fresco|ligerito)/.test(t)) return "ligero";
-    if(/(intenso|potente|con cuerpo|fuerte|robusto|contundente)/.test(t)) return "intenso"; if(/(medio|equilibrad|ni mucho ni poco|intermedio)/.test(t)) return "medio"; return null; },
-  experiencia(t){ if(/(un poco|algo|normal|regular|lo basico|me defiendo)/.test(t)) return "algo"; if(/(poca|poco|nada|no entiendo|novato|principiante|ni idea|muy poco|no se mucho)/.test(t)) return "poca";
-    if(/(mucha|bastante|experto|entiendo|aficionad|sumiller|me gusta mucho)/.test(t)) return "mucha"; return null; },
-  nuevo(t){ if(/(igual|indiferente|cualquiera)/.test(t)) return "indiferente"; if(/(descubr|nuevo|diferente|distint|sorprend|original|probar)/.test(t)) return "descubrir";
-    if(/(conocido|clasico|seguro|de siempre|tradicional|habitual)/.test(t)) return "clasico"; return null; }
+  cuerpo(t){ if(/(don.?t mind|either|not sure|any)/.test(t)) return "indiferente"; if(/(full|intense|powerful|strong|robust|bold|heavy)/.test(t)) return "intenso";
+    if(/(light|smooth|soft|fresh|easy)/.test(t)) return "ligero"; if(/(medium|balanced|in between|middle)/.test(t)) return "medio"; return null; },
+  experiencia(t){ if(/(a bit|a little|some|average|basic|so-so|okay|ok)/.test(t)) return "algo"; if(/(not much|nothing|none|no idea|beginner|novice|little|very little|don.?t know)/.test(t)) return "poca";
+    if(/(a lot|lots|quite|expert|enthusiast|sommelier|very much|plenty)/.test(t)) return "mucha"; return null; },
+  nuevo(t){ if(/(don.?t mind|either|whatever|any)/.test(t)) return "indiferente"; if(/(discover|new|different|surprise|original|try|unusual)/.test(t)) return "descubrir";
+    if(/(known|classic|safe|traditional|usual|familiar)/.test(t)) return "clasico"; return null; }
 };
-const YES = /^(si|sí|vale|claro|ok|de acuerdo|perfecto|adelante|partir|usa|usar|repet)/, NO = /^(no|empezar|de cero|cambiar|nuevo)/;
+const YES = /^(yes|yeah|yep|sure|ok|okay|of course|please|great|go ahead|start from|use|si)/, NO = /^(no|nope|start over|start again|from scratch|change|new)/;
 
 // ================= Condición =================
 const DEF = {aut:"confirma", resp:"opciones", q:"3", guia:"guiado", atrib:"propia", inv:"defecto", gar:"no", out:"positivo", s:"1"};
@@ -349,11 +351,11 @@ function glass(color){
   const bubbles = color==="espumoso" ? '<circle cx="20" cy="18" r="1.4" fill="var(--surface)"/><circle cx="25" cy="14" r="1.1" fill="var(--surface)"/><circle cx="22" cy="10" r="0.9" fill="var(--surface)"/>' : "";
   return `<svg class="glass" viewBox="0 0 44 56" aria-hidden="true"><path d="M10 3h24c0 12-2 22-12 24C12 25 10 15 10 3z" fill="none" stroke="var(--muted)" stroke-width="1.5"/><path d="M11 9h22c-.6 8-3 15-11 16.5C14 24 11.6 17 11 9z" fill="${c}"/>${bubbles}<path d="M22 27v20M14 51h16" stroke="var(--muted)" stroke-width="1.5" fill="none"/></svg>`;
 }
-function wineCard(w,{featured=false, action=null, actionLabel="Comprar"}={}){
+function wineCard(w,{featured=false, action=null, actionLabel="Buy"}={}){
   const d=document.createElement("article"); d.className="wine"+(featured?" featured":"");
-  d.innerHTML=`${glass(w.color)}<div style="min-width:0"><h3></h3><div class="meta"></div><div class="notes"></div></div><div style="display:grid;gap:8px;justify-items:end"><div class="price">${w.price} €</div></div>`;
+  d.innerHTML=`${glass(w.color)}<div style="min-width:0"><h3></h3><div class="meta"></div><div class="notes"></div></div><div style="display:grid;gap:8px;justify-items:end"><div class="price">€${w.price}</div></div>`;
   d.querySelector("h3").textContent=w.name;
-  d.querySelector(".meta").textContent=`${w.bodega} · D.O. ${w.do} · ${w.uva} · ${w.anada} · ${w.alc.toLocaleString("es-ES")}% vol.`;
+  d.querySelector(".meta").textContent=`${w.bodega} · D.O. ${w.do} · ${w.uva} · ${w.anada} · ${w.alc.toLocaleString("en-GB")}% vol.`;
   d.querySelector(".notes").textContent=w.notes;
   if (action){ const b=btn(actionLabel,()=>action(w)); d.lastElementChild.append(b); }
   return d;
@@ -387,10 +389,10 @@ function rankWines(p,full){
 }
 function reasons(w,p){
   const r=[];
-  if (p.comida && w.food.includes(p.comida)) r.push(`marida muy bien con ${FOOD[p.comida]}`);
-  if (p.color && p.color!=="indiferente" && w.color===p.color) r.push(`es el ${w.color} que buscabas`);
-  r.push(`entra en tu presupuesto (${w.price} €)`);
-  return r.join(", ").replace(/, ([^,]*)$/," y $1");
+  if (p.comida && w.food.includes(p.comida)) r.push(`it pairs very well with ${FOOD[p.comida]}`);
+  if (p.color && p.color!=="indiferente" && w.color===p.color) r.push(`it’s the ${COLOR[w.color]} you were looking for`);
+  r.push(`it fits your budget (€${w.price})`);
+  return r.join(", ").replace(/, ([^,]*)$/," and $1");
 }
 
 // ================= Fase 1: preguntas =================
@@ -404,7 +406,7 @@ function nextQuestion(first=false){
   if (!S.queue.length) return finishElicit();
   S.cur=S.queue.shift(); S.fails=0;
   const q=Q[S.cur].q;
-  const text = first && !S.m.memoria_usada && S.m.revisiones===0 ? `Hola, soy ${S.agent.name}, tu asistente de compras en La Cava Digital. Te ayudo con el vino para la cena del sábado. ${q}` : (first ? q : `${ACK[ORDER[cond.q].indexOf(S.cur)%ACK.length]} ${q}`);
+  const text = first && !S.m.memoria_usada && S.m.revisiones===0 ? `Hi, I’m ${S.agent.name}, your shopping assistant at The Digital Cellar. I’ll help you choose the wine for Saturday’s dinner. ${q}` : (first ? q : `${ACK[ORDER[cond.q].indexOf(S.cur)%ACK.length]} ${q}`);
   agentSays(text,{pregunta:S.cur});
   askInput();
 }
@@ -432,9 +434,9 @@ function onText(raw){
   S.fails++; S.m.no_entendido++;
   if (S.fails>=2){
     S.m.saltadas++; log("pregunta_saltada",{pregunta:S.cur});
-    agentSays("No pasa nada, lo dejo abierto y seguimos."); composer.hidden=true; setTimeout(()=>nextQuestion(),500); return;
+    agentSays("No problem, I’ll leave that open and move on."); composer.hidden=true; setTimeout(()=>nextQuestion(),500); return;
   }
-  agentSays(`Perdona, no te he entendido bien. Puedes decirme, por ejemplo, ${Q[S.cur].ex}.`,{no_entendido:S.cur});
+  agentSays(`Sorry, I didn’t quite get that. You could say, for example, ${Q[S.cur].ex}.`,{no_entendido:S.cur});
 }
 composer.addEventListener("submit",e=>{ e.preventDefault(); const t=input.value; input.value=""; onText(t); });
 
@@ -451,10 +453,10 @@ let MEM=null;
 function offerMemory(m){
   S.stage="memoria"; MEM=m;
   const w = WINES.find(x=>x.id===m.vino);
-  const bits=[]; if(m.prefs.color&&m.prefs.color!=="indiferente") bits.push(`un ${m.prefs.color}`); if(m.prefs.comida) bits.push(`para ${FOOD[m.prefs.comida]}`); if(m.prefs.presupuesto) bits.push(`hasta ${m.prefs.presupuesto} €`);
-  const t = `Hola de nuevo, soy ${S.agent.name}. La última vez buscabas ${bits.join(", ")||"un vino para una cena"}${w?` y te llevaste ${w.name}`:""}. ¿Quieres que parta de esas preferencias?`;
+  const bits=[]; if(m.prefs.color&&m.prefs.color!=="indiferente") bits.push(`a ${COLOR[m.prefs.color]} wine`); if(m.prefs.comida) bits.push(`for ${FOOD[m.prefs.comida]}`); if(m.prefs.presupuesto) bits.push(`up to €${m.prefs.presupuesto}`);
+  const t = `Hello again, I’m ${S.agent.name}. Last time you were looking for ${bits.join(", ")||"a wine for a dinner"}${w?` and you chose ${w.name}`:""}. Shall I start from those preferences?`;
   agentSays(t,{oferta_memoria:true});
-  if (cond.resp==="opciones"){ setChips([["Sí, parte de ahí","si"],["No, empecemos de cero","no"]],(l,v)=>{ say("user",l); chips.replaceChildren(); useMemory(v==="si"); }); }
+  if (cond.resp==="opciones"){ setChips([["Yes, start from there","si"],["No, let’s start over","no"]],(l,v)=>{ say("user",l); chips.replaceChildren(); useMemory(v==="si"); }); }
   else { composer.hidden=false; input.focus(); }
 }
 function onMemoryText(text){
@@ -462,12 +464,12 @@ function onMemoryText(text){
   const t=norm(text);
   if (YES.test(t)) return useMemory(true);
   if (NO.test(t)) return useMemory(false);
-  agentSays("¿Prefieres que parta de lo de la última vez? Responde «sí» o «no».");
+  agentSays("Would you like me to start from last time? Please answer “yes” or “no”.");
 }
 function useMemory(yes){
   composer.hidden=true; S.m.memoria_usada=yes; log("decision_memoria",{usa:yes});
-  if (yes){ agentSays("Perfecto, parto de lo que me contaste."); startElicitAfterMemory(MEM.prefs); }
-  else { agentSays("De acuerdo, empezamos de cero."); setTimeout(()=>startElicit({}),300); }
+  if (yes){ agentSays("Great, I’ll start from what you told me."); startElicitAfterMemory(MEM.prefs); }
+  else { agentSays("OK, let’s start over."); setTimeout(()=>startElicit({}),300); }
 }
 function startElicitAfterMemory(prefs){
   // Con 8 preguntas se reutilizan todas las respuestas guardadas; con 3, solo las tres base.
@@ -488,54 +490,54 @@ function finishElicit(){
 }
 function intro(w){
   const why=reasons(w,S.prefs);
-  return cond.atrib==="propia" ? `Con lo que me has contado, esta es tu selección: ${w.name}. ${cap(why)}.`
-                               : `Esta es la selección más valorada por clientes con un perfil parecido al tuyo: ${w.name}. ${cap(why)}.`;
+  return cond.atrib==="propia" ? `Based on what you’ve told me, this is your selection: ${w.name}. ${cap(why)}.`
+                               : `This is the top-rated choice among customers with a profile similar to yours: ${w.name}. ${cap(why)}.`;
 }
 const cap = s => s.charAt(0).toUpperCase()+s.slice(1);
 function decide(w){
   const card=document.createElement("div"); card.className="card";
   const extra=document.createElement("div"); extra.className="row";
   if (cond.aut==="recomienda"){
-    agentSays(`${intro(w)} La decisión es tuya: puedes comprarlo o ver otras opciones.`,{autonomia:"recomienda"});
-    extra.append(btn("Comprar este",()=>buy(w,"cliente")), btn("Ver otras opciones",()=>moreOptions(card),"ghost"));
-    card.append(label("Recomendación"), wineCard(w,{featured:true}), extra);
+    agentSays(`${intro(w)} It’s your call: you can buy it or see other options.`,{autonomia:"recomienda"});
+    extra.append(btn("Buy this one",()=>buy(w,"cliente")), btn("See other options",()=>moreOptions(card),"ghost"));
+    card.append(label("Recommendation"), wineCard(w,{featured:true}), extra);
   } else if (cond.aut==="confirma"){
-    agentSays(`${intro(w)} He preparado el pedido; solo falta que lo confirmes.`,{autonomia:"confirma"});
-    extra.append(btn("Confirmar compra",()=>buy(w,"cliente")), btn("Ver otras opciones",()=>moreOptions(card),"ghost"));
-    card.append(label("Pedido preparado · pendiente de tu confirmación"), wineCard(w,{featured:true}), extra, assuranceLine());
+    agentSays(`${intro(w)} I’ve prepared the order; it just needs your confirmation.`,{autonomia:"confirma"});
+    extra.append(btn("Confirm purchase",()=>buy(w,"cliente")), btn("See other options",()=>moreOptions(card),"ghost"));
+    card.append(label("Order prepared · awaiting your confirmation"), wineCard(w,{featured:true}), extra, assuranceLine());
   } else {
-    agentSays(`${intro(w)} Ya lo he comprado por ti; te llegará antes del sábado.`,{autonomia:"autonomo"});
-    card.append(label("Pedido realizado por tu asistente"), wineCard(w,{featured:true}), assuranceLine());
+    agentSays(`${intro(w)} I’ve already bought it for you; it will arrive before Saturday.`,{autonomia:"autonomo"});
+    card.append(label("Order placed by your assistant"), wineCard(w,{featured:true}), assuranceLine());
     block(card); return buy(w,"agente");
   }
-  if (cond.guia==="libre") extra.append(btn("Cambiar mis respuestas",()=>revise(),"ghost"), btn("Ver catálogo completo",(e)=>catalog(card),"ghost"));
+  if (cond.guia==="libre") extra.append(btn("Change my answers",()=>revise(),"ghost"), btn("See full catalogue",(e)=>catalog(card),"ghost"));
   block(card);
 }
-function assuranceLine(){ const p=document.createElement("p"); p.className="note"; p.hidden=cond.gar!=="si"; p.textContent="Compra protegida: puedes cancelarla sin coste durante 24 horas."; return p; }
+function assuranceLine(){ const p=document.createElement("p"); p.className="note"; p.hidden=cond.gar!=="si"; p.textContent="Protected purchase: you can cancel it free of charge within 24 hours."; return p; }
 function moreOptions(card){
   const next = S.ranking.filter(w=>!S.shown.has(w.id)).slice(0,2);
   S.m.mas_opciones++; log("pide_mas_opciones",{n:S.m.mas_opciones, mostrados:next.map(w=>w.id)});
-  if (!next.length){ agentSays("No tengo más vinos que encajen con lo que me has dicho dentro de tu presupuesto."); return; }
+  if (!next.length){ agentSays("I have no more wines that match what you told me within your budget."); return; }
   next.forEach(w=>S.shown.add(w.id));
-  agentSays(next.length>1?"Aquí tienes otras dos opciones que también encajan.":"Aquí tienes otra opción que también encaja.");
+  agentSays(next.length>1?"Here are two more options that also fit.":"Here is another option that also fits.");
   const box=document.createElement("div"); box.className="card";
   const list=document.createElement("div"); list.className="list";
-  next.forEach(w=>list.append(wineCard(w,{action:x=>buy(x,"cliente"), actionLabel:"Elegir este"})));
+  next.forEach(w=>list.append(wineCard(w,{action:x=>buy(x,"cliente"), actionLabel:"Choose this one"})));
   const row=document.createElement("div"); row.className="row";
-  row.append(btn("Ver otras opciones",()=>moreOptions(box),"ghost"));
-  box.append(label("Otras opciones"), list, row); block(box);
+  row.append(btn("See other options",()=>moreOptions(box),"ghost"));
+  box.append(label("Other options"), list, row); block(box);
 }
 function catalog(){
   S.m.catalogo++; log("abre_catalogo",{n:S.m.catalogo});
   const box=document.createElement("div"); box.className="card"; const list=document.createElement("div"); list.className="list";
-  WINES.forEach(w=>list.append(wineCard(w,{featured:w.id===S.rec.id, action:x=>buy(x,"cliente"), actionLabel:"Elegir este"})));
-  box.append(label("Catálogo completo"), list); block(box);
+  WINES.forEach(w=>list.append(wineCard(w,{featured:w.id===S.rec.id, action:x=>buy(x,"cliente"), actionLabel:"Choose this one"})));
+  box.append(label("Full catalogue"), list); block(box);
 }
 function revise(){
   if (S.stage==="done") return;
   lockButtons(); S.m.revisiones++; log("revisa_respuestas",{n:S.m.revisiones});
   if (S.bought && S.boughtBy==="agente"){ S.m.cancelaciones++; log("cancela_compra",{id:S.bought.id}); S.bought=null; }
-  agentSays("Claro, vamos a ajustarlo. Te vuelvo a preguntar.");
+  agentSays("Sure, let’s adjust it. I’ll ask you again.");
   setTimeout(()=>startElicit({}),400);
 }
 
@@ -548,14 +550,14 @@ function buy(w, by){
   lockButtons();
   log("compra",{id:w.id, nombre:w.name, por:by, es_la_recomendada:w.id===S.rec.id});
   const done=document.createElement("div"); done.className="card";
-  const ok=document.createElement("div"); ok.className="order-ok"; ok.textContent=`Pedido confirmado · ${w.name} · ${w.price} €`;
+  const ok=document.createElement("div"); ok.className="order-ok"; ok.textContent=`Order confirmed · ${w.name} · €${w.price}`;
   const row=document.createElement("div"); row.className="row";
-  row.append(btn("Avanzar al sábado",()=>{ lockButtons(); outcome(S.bought); }));
+  row.append(btn("Skip to Saturday",()=>{ lockButtons(); outcome(S.bought); }));
   if (by==="agente"){
-    row.append(btn("Cambiar el vino",()=>{ S.m.cancelaciones++; log("pide_cambiar_vino_del_agente"); lockButtons();
-      const c=document.createElement("div"); c.className="order-cancel"; c.textContent="Pedido cancelado. Elige otro vino:"; block(c);
+    row.append(btn("Change the wine",()=>{ S.m.cancelaciones++; log("pide_cambiar_vino_del_agente"); lockButtons();
+      const c=document.createElement("div"); c.className="order-cancel"; c.textContent="Order cancelled. Choose another wine:"; block(c);
       S.stage="decide"; moreOptions(); },"ghost"));
-    if (cond.guia==="libre") row.append(btn("Cambiar mis respuestas",()=>revise(),"ghost"));
+    if (cond.guia==="libre") row.append(btn("Change my answers",()=>revise(),"ghost"));
   }
   done.append(ok,row);
   setTimeout(()=>block(done), by==="agente"?500:200);
@@ -563,26 +565,26 @@ function buy(w, by){
 
 // ================= Fase 3: resultado y cierre =================
 function outcome(w){
-  S.stage="done"; const food=FOOD[S.prefs.comida]||"la cena";
+  S.stage="done"; const food=FOOD[S.prefs.comida]||"the dinner";
   const box=document.createElement("div"); box.className="outcome "+(cond.out==="positivo"?"pos":"neg");
   const h=document.createElement("h3"), p=document.createElement("p"); p.style.margin="0";
-  if (cond.out==="positivo"){ h.textContent="La cena fue un éxito"; p.textContent=`Tus amigos elogiaron ${w.name}. Combinó perfectamente con ${food} y la botella se acabó enseguida.`; }
-  else { h.textContent="El vino no convenció"; p.textContent=`${w.name} resultó ${NEG[S.prefs.comida]||"poco adecuado para la cena"}. Nadie repitió y media botella se quedó sin beber.`; }
+  if (cond.out==="positivo"){ h.textContent="The dinner was a success"; p.textContent=`Your friends loved ${w.name}. It paired perfectly with ${food} and the bottle was empty in no time.`; }
+  else { h.textContent="The wine didn’t impress"; p.textContent=`${w.name} turned out ${NEG[S.prefs.comida]||"not quite right for the dinner"}. Nobody had a second glass and half the bottle was left.`; }
   box.append(h,p); block(box); log("resultado",{valencia:cond.out}); log("fin");
   finish();
 }
 async function finish(){
   const sum=summary();
   const end=document.createElement("div"); end.className="card";
-  end.append(label("Fin de la tarea"));
-  const t=document.createElement("p"); t.className="note"; t.textContent="Copia este código y vuelve al cuestionario para responder unas preguntas."; end.append(t);
+  end.append(label("End of task"));
+  const t=document.createElement("p"); t.className="note"; t.textContent="Copy this code and return to the questionnaire to answer a few questions."; end.append(t);
   const code=document.createElement("div"); code.className="code"; code.textContent=sum.codigo_fin; end.append(code);
-  end.append(btn("Copiar código",async(e)=>{ try{ await navigator.clipboard.writeText(sum.codigo_fin); e.target.textContent="Copiado"; }catch{ const r=document.createRange(); r.selectNodeContents(code); getSelection().removeAllRanges(); getSelection().addRange(r); } },"ghost"));
+  end.append(btn("Copy code",async(e)=>{ try{ await navigator.clipboard.writeText(sum.codigo_fin); e.target.textContent="Copied"; }catch{ const r=document.createRange(); r.selectNodeContents(code); getSelection().removeAllRanges(); getSelection().addRange(r); } },"ghost"));
   block(end);
   // 1) Encuesta que contiene la página (Qualtrics u otra): recibe todo el registro
   try{ if (window.parent!==window) window.parent.postMessage({tipo:"vera_fin", datos:sum}, "*"); }catch{}
   // 2) Base de datos del artefacto (pilotos dentro de la organización)
-  if (db){ try{ await db.doc("sesiones/"+S.sid).set(JSON.parse(JSON.stringify(sum))); if(pid) await db.doc("memoria/"+pid).set({codigo_memoria:sum.codigo_memoria, sesion:sum.sesion, actualizado:new Date().toISOString()}); $("#store-note").textContent="Sesión guardada en la base de datos del agente."; log("guardado_db"); }catch(e){ $("#store-note").textContent="No se pudo guardar en la base de datos ("+(e?.code||"error")+"). Copia el JSON."; } }
+  if (db){ try{ await db.doc("sesiones/"+S.sid).set(JSON.parse(JSON.stringify(sum))); if(pid) await db.doc("memoria/"+pid).set({codigo_memoria:sum.codigo_memoria, sesion:sum.sesion, actualizado:new Date().toISOString()}); $("#store-note").textContent="Session saved to the agent’s database."; log("guardado_db"); }catch(e){ $("#store-note").textContent="Could not save to the database ("+(e?.code||"error")+"). Copy the JSON."; } }
   // 3) Memoria en el navegador (respaldo para sesiones repetidas)
   if (pid){ try{ localStorage.setItem("vera-mem-"+pid, sum.codigo_memoria); }catch{} }
   $("#mem").value=sum.codigo_memoria;
@@ -591,12 +593,12 @@ async function finish(){
 // ================= Personalización del agente =================
 function setupAgent(next){
   const card=document.createElement("div"); card.className="card setup";
-  card.innerHTML=`<div class="label">Antes de empezar, configura tu asistente</div>
-  <label for="ag-name">Ponle nombre<input id="ag-name" maxlength="20" placeholder="Por ejemplo, Vera"></label>
-  <div class="field"><span>¿Cómo quieres que te hable?</span><div class="seg" id="ag-tone"><button type="button" data-v="cercano" aria-pressed="true">Cercano</button><button type="button" data-v="formal" aria-pressed="false">Formal</button></div></div>
-  <div class="field"><span>¿Qué te importa más al comprar vino?</span><div class="seg" id="ag-pri"><button type="button" data-v="el precio" aria-pressed="false">El precio</button><button type="button" data-v="la calidad" aria-pressed="true">La calidad</button><button type="button" data-v="descubrir vinos nuevos" aria-pressed="false">Descubrir vinos nuevos</button></div></div>`;
+  card.innerHTML=`<div class="label">Before you start, set up your assistant</div>
+  <label for="ag-name">Give it a name<input id="ag-name" maxlength="20" placeholder="For example, Vera"></label>
+  <div class="field"><span>How should it talk to you?</span><div class="seg" id="ag-tone"><button type="button" data-v="cercano" aria-pressed="true">Friendly</button><button type="button" data-v="formal" aria-pressed="false">Formal</button></div></div>
+  <div class="field"><span>What matters most to you when buying wine?</span><div class="seg" id="ag-pri"><button type="button" data-v="el precio" aria-pressed="false">Price</button><button type="button" data-v="la calidad" aria-pressed="true">Quality</button><button type="button" data-v="descubrir vinos nuevos" aria-pressed="false">Discovering new wines</button></div></div>`;
   card.querySelectorAll(".seg").forEach(s=>s.addEventListener("click",e=>{ const b=e.target.closest("button"); if(!b) return; s.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed",String(x===b))); }));
-  const go=btn("Guardar y empezar",()=>{
+  const go=btn("Save and start",()=>{
     const name=card.querySelector("#ag-name").value.trim().slice(0,20)||"Vera";
     S.agent={name, tono:card.querySelector("#ag-tone [aria-pressed=true]").dataset.v, prioridad:card.querySelector("#ag-pri [aria-pressed=true]").dataset.v};
     log("personaliza_agente",{...S.agent}); card.querySelectorAll("input,button").forEach(x=>x.disabled=true); next();
@@ -608,7 +610,7 @@ function setupAgent(next){
 async function start(){
   if (S.stage!=="idle") return;
   S.stage="setup"; $("#start").disabled=true; S.t0=performance.now();
-  if (Number(cond.s)>1) $("#scenario").innerHTML="<b>Tu tarea:</b> este sábado tienes otra cena con amigos en casa y vuelves a la tienda a por un vino. El asistente te ayudará.";
+  if (Number(cond.s)>1) $("#scenario").innerHTML="<b>Your task:</b> this Saturday you are having friends over for dinner again and come back to the shop for a wine. The assistant will help you.";
   log("inicio",{condicion:{...cond}, participante:pid||null, sesion_id:S.sid});
   const go = async ()=>{ const m=await loadMemory(); if (m) offerMemory(m); else startElicit({}); };
   if (cond.inv==="personaliza") setupAgent(go); else go();
@@ -616,19 +618,19 @@ async function start(){
 function reset(){
   S=freshState(); MEM=null; chat.replaceChildren(); chips.replaceChildren(); composer.hidden=true; input.value="";
   $("#log").textContent=""; $("#nlog").textContent="0"; $("#start").disabled=false; $("#copy-note").textContent=""; $("#store-note").textContent="";
-  $("#scenario").innerHTML="<b>Tu tarea:</b> el sábado tienes una cena con amigos en casa y quieres comprar un vino. El asistente de la tienda te ayudará.";
+  $("#scenario").innerHTML="<b>Your task:</b> on Saturday you are having friends over for dinner and want to buy a bottle of wine. The shop’s assistant will help you.";
   showCond(); if (participant) start();
 }
 $("#start").onclick=start; $("#reset").onclick=reset;
-$("#copy").onclick=async()=>{ try{ await navigator.clipboard.writeText(JSON.stringify(summary(),null,2)); $("#copy-note").textContent="Registro copiado."; }catch{ const r=document.createRange(); r.selectNodeContents($("#log")); getSelection().removeAllRanges(); getSelection().addRange(r); $("#copy-note").textContent="No se pudo copiar: el registro está seleccionado, cópialo con Ctrl+C."; } };
-$("#copylink").onclick=async()=>{ try{ await navigator.clipboard.writeText(linkToken()); $("#copy-note").textContent="Enlace de condición copiado (añádelo al final de la dirección del agente)."; }catch{ $("#copy-note").textContent="Selecciona el texto del enlace y cópialo."; } };
+$("#copy").onclick=async()=>{ try{ await navigator.clipboard.writeText(JSON.stringify(summary(),null,2)); $("#copy-note").textContent="Log copied."; }catch{ const r=document.createRange(); r.selectNodeContents($("#log")); getSelection().removeAllRanges(); getSelection().addRange(r); $("#copy-note").textContent="Could not copy: the log is selected, copy it with Ctrl+C."; } };
+$("#copylink").onclick=async()=>{ try{ await navigator.clipboard.writeText(linkToken()); $("#copy-note").textContent="Condition link copied (append it to the agent’s URL)."; }catch{ $("#copy-note").textContent="Select the link text and copy it."; } };
 
 // Capacidades opcionales: la página funciona sin ellas (fuera de claude.ai no existen)
 (async()=>{
   try{ db = await window.claude?.use?.("db") ?? null; }catch{ db=null; }
-  $("#store-note").textContent = db ? "Las sesiones se guardarán en la base de datos del agente." : "Sin base de datos en esta vista: el registro se envía a la encuesta que contiene la página, o cópialo a mano.";
+  $("#store-note").textContent = db ? "Sessions will be saved to the agent’s database." : "No database in this view: the log is sent to the survey that embeds the page, or copy it manually.";
   try{ downloads = await window.claude?.use?.("downloads") ?? null;
-    if (downloads){ const b=$("#dl"); b.hidden=false; b.onclick=async()=>{ try{ await downloads.save({filename:`vera-${S.sid}.json`, data:JSON.stringify(summary(),null,2)}); $("#copy-note").textContent="Registro descargado."; }catch(e){ if(e?.code==="unavailable") b.hidden=true; } }; }
+    if (downloads){ const b=$("#dl"); b.hidden=false; b.onclick=async()=>{ try{ await downloads.save({filename:`vera-${S.sid}.json`, data:JSON.stringify(summary(),null,2)}); $("#copy-note").textContent="Log downloaded."; }catch(e){ if(e?.code==="unavailable") b.hidden=true; } }; }
   }catch{}
 })();
 if (participant) setTimeout(start, 300);
